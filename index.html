@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>National Park Search API Assignment</title>
+        <meta name="viewpoet" content="width=decive-width">
+        <meta name="description" content="Bloc 9-7 Assignment">
+        <meta name="keywords" content="park, api, bloc">
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="style.css"> 
+    </head>
+    <body>
+        <header>
+            <h1>Find any National Park by State</h1>
+        </header>
+        <main role="main">
+            <section class="userInput">
+                <form id="userForm" autocomplete="off">
+                    <fieldset>
+                        <legend><h2>Enter the states</h2></legend>
+                        <input id="stateInput" type="text" placeholder="Enter State Here" required>
+                        <legend><h2>Enter a Max number of results</h2></legend>
+                        <input id="maxNumInput" type="number" value="10" required>
+                        <button type="submit" value="Find Parks">Find Parks</button>
+                    </fieldset>
+                </form>
+            </section>
+            <section class="parkResults hidden">
+                    <h3></h3>
+                    <ul id="listResults"></ul>
+            </section>
+        </main>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="main.js"></script>
+    </body>
+</html>
