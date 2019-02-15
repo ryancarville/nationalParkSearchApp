@@ -9,7 +9,7 @@ function getParkQueries(query, maxResults) {
         stateCode: query,
         limit: (maxResults - 1),
         }
-    
+    console.log(params);
     const queryString = formatQueryParams(params)
     const url = searchURL + '?' + queryString;
     console.log(url);
@@ -31,6 +31,7 @@ function formatQueryParams(params) {
     const queryItems = Object.keys(params)
     .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`)
     return queryItems.join('&');
+
 }
 
 function displayReults(responseJson) {
@@ -62,10 +63,10 @@ function failureCallback(errMessage) {
 function searchStart() {
     $('form').submit(event => {
         event.preventDefault();
-        let stateCodes = $('#stateInput').val().toLowerCase().replace(/\s/g, '').split(',');
+        let userInputs = $('#stateInput').val().toLowerCase().replace(/\s/g, '').split(',');
         let maxResults = $('#maxNumInput').val();
-        console.log(stateCodes)
-        getParkQueries(stateCodes, maxResults);
+        console.log(userInputs)
+        getParkQueries(userInputs, maxResults);
         
     })
 };
