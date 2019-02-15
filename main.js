@@ -37,13 +37,11 @@ function displayReults(responseJson) {
     console.log(responseJson);
     $('.parkResults').empty();
     $('.parkResults').append(`<h3></h3><ul id="listResults"></ul>`);
-    $('.parkResults > h3').append(`All Nartional Parks for ${document.getElementById('stateInput').value}`)
+    $('.parkResults > h3').append(`All Nartional Parks for ${document.getElementById("stateInput").value}`);
     $('.parkResults').removeClass('hidden')
     
     for(let i = 0; i < responseJson.data.length; i++){
         console.log(`Created li link for ${responseJson.data[i].fullName}`)
-        let location = `Latitude: + ${responseJson.data[i].latLong[0]} + 
-        <br>Longitude:  + ${responseJson.data[i].latLong[1]}`
         $('#listResults').append(
             `<li><b>${responseJson.data[i].fullName}</b></li>
             <li><i>${responseJson.data[i].description}</i></li>
