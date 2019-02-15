@@ -5,13 +5,15 @@ const searchURL = 'https://api.nps.gov/api/v1/parks'
 
 function getParkQueries(query, maxResults) {
     const params = {
-      key: apiKey,
-      q: query,
-      limit: (maxResults - 1),
-    };
+        key: apiKey,
+        stateCode: query,
+        limit: (maxResults - 1),
+        }
+    
     const queryString = formatQueryParams(params)
     const url = searchURL + '?' + queryString;
     console.log(url);
+    
     fetch(url)
         .then(response => {
             if(!response.ok) {
@@ -28,7 +30,7 @@ function getParkQueries(query, maxResults) {
 function formatQueryParams(params) {
     const queryItems = Object.keys(params)
     .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`)
-  return queryItems.join('&');
+    return queryItems.join('&');
 }
 
 function displayReults(responseJson) {
@@ -62,11 +64,11 @@ function failureCallback(errMessage) {
 function searchStart() {
     $('form').submit(event => {
         event.preventDefault();
-        let str = $('#stateInput').val();
+        let stateCodes = $('#stateInput').val().toLowerCase().replace(/\s/g, '').split(',');
         let maxResults = $('#maxNumInput').val();
-        let userEntry = str.toLowerCase();
-        getParkQueries(userEntry, maxResults);
-       
+        console.log(stateCodes)
+        getParkQueries(stateCodes, maxResults);
+        
     })
 };
 
