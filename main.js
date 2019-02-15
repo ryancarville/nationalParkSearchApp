@@ -31,7 +31,6 @@ function formatQueryParams(params) {
     const queryItems = Object.keys(params)
     .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`)
     return queryItems.join('&');
-
 }
 
 function displayReults(responseJson) {
@@ -66,8 +65,7 @@ function searchStart() {
         let userInputs = $('#stateInput').val().toLowerCase().replace(/\s/g, '').split(',');
         let maxResults = $('#maxNumInput').val();
         console.log(userInputs)
-        getParkQueries(userInputs, maxResults);
-        
+        getParkQueries(userInputs, maxResults); 
     })
 };
 
